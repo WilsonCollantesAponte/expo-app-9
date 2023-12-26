@@ -3,10 +3,20 @@ import React from "react";
 
 export default function home() {
   return (
-    <View>
-      <Text>home</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>home</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#3f3f46",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    color: "white",
+  },
+});
