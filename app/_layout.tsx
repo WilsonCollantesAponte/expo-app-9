@@ -1,4 +1,4 @@
-import { Link, Slot, useLocalSearchParams } from "expo-router";
+import { Link, Slot, usePathname } from "expo-router";
 import { StyleSheet, View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -6,17 +6,26 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function HomeLayout() {
-  const obj = useLocalSearchParams();
-  console.log(obj);
+  const pathname = usePathname();
+
+  console.log(pathname);
 
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
         <Link href="/">
-          <Feather name="home" size={24} color="black" />
+          <Feather
+            name="home"
+            size={24}
+            color={`${pathname === "/" ? "white" : "black"}`}
+          />
         </Link>
         <Link href="/home">
-          <Entypo name="news" size={22} color="black" />
+          <Entypo
+            name="news"
+            size={22}
+            color={`${pathname === "/home" ? "white" : "black"}`}
+          />
         </Link>
         <Link href="/">
           <MaterialIcons name="post-add" size={26} color="black" />
