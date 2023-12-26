@@ -8,8 +8,6 @@ import { Ionicons } from "@expo/vector-icons";
 export default function HomeLayout() {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
@@ -20,32 +18,32 @@ export default function HomeLayout() {
             color={`${pathname === "/" ? "white" : "black"}`}
           />
         </Link>
-        <Link href="/home">
+        <Link href="/posts/systemsEngineering">
           <Entypo
             name="news"
             size={22}
-            color={`${pathname === "/home" ? "white" : "black"}`}
+            color={`${pathname.split("/")[1] === "posts" ? "white" : "black"}`}
           />
         </Link>
-        <Link href="/">
+        <Link href="/forms/newPost">
           <MaterialIcons
             name="post-add"
             size={26}
-            color={`${pathname === "/home" ? "white" : "black"}`}
+            color={`${pathname === "/forms/newPost" ? "white" : "black"}`}
           />
         </Link>
-        <Link href="/">
+        <Link href="/forms/signIn">
           <Ionicons
             name="person-circle"
             size={24}
-            color={`${pathname === "/home" ? "white" : "black"}`}
+            color={`${pathname === "/forms/signIn" ? "white" : "black"}`}
           />
         </Link>
-        <Link href="/">
+        <Link href="/forms/login">
           <Entypo
             name="login"
             size={24}
-            color={`${pathname === "/home" ? "white" : "black"}`}
+            color={`${pathname === "/forms/login" ? "white" : "black"}`}
           />
         </Link>
       </View>
