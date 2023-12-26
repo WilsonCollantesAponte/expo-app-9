@@ -28,13 +28,25 @@ export default function HomeLayout() {
           />
         </Link>
         <Link href="/">
-          <MaterialIcons name="post-add" size={26} color="black" />
+          <MaterialIcons
+            name="post-add"
+            size={26}
+            color={`${pathname === "/home" ? "white" : "black"}`}
+          />
         </Link>
         <Link href="/">
-          <Ionicons name="person-circle" size={24} color="black" />
+          <Ionicons
+            name="person-circle"
+            size={24}
+            color={`${pathname === "/home" ? "white" : "black"}`}
+          />
         </Link>
         <Link href="/">
-          <Entypo name="login" size={24} color="black" />
+          <Entypo
+            name="login"
+            size={24}
+            color={`${pathname === "/home" ? "white" : "black"}`}
+          />
         </Link>
       </View>
       <Slot />
