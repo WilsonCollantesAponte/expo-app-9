@@ -72,11 +72,7 @@ export default function HomeLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop: 55,
     paddingTop: Constants.statusBarHeight,
-    // backgroundColor: "#ffffff",
-    // backgroundColor: "#E11D48",
-    // backgroundColor: "#ee4c4c",
     backgroundColor: "#f4511e",
   },
   navbar: {
