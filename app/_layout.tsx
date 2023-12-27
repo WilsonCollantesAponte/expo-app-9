@@ -1,9 +1,11 @@
 import { Link, Slot, usePathname } from "expo-router";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import Constants from "expo-constants";
 
 export default function HomeLayout() {
   const pathname = usePathname();
@@ -49,15 +51,33 @@ export default function HomeLayout() {
       </View>
       <Slot />
     </View>
+    // <Stack
+    //   // https://reactnavigation.org/docs/headers#sharing-common-options-across-screens
+    //   screenOptions={{
+    //     headerStyle: {
+    //       backgroundColor: "#f4511e",
+    //     },
+    //     headerTintColor: "#fff",
+    //     headerTitleStyle: {
+    //       fontWeight: "bold",
+    //     },
+    //   }}
+    // >
+    //   {/* Optionally configure static options outside the route. */}
+    //   <Stack.Screen name="home" options={{}} />
+    // </Stack>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // paddingTop: 55,
+    paddingTop: Constants.statusBarHeight,
     // backgroundColor: "#ffffff",
     // backgroundColor: "#E11D48",
-    backgroundColor: "#ee4c4c",
+    // backgroundColor: "#ee4c4c",
+    backgroundColor: "#f4511e",
   },
   navbar: {
     flexDirection: "row",
