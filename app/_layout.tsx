@@ -65,6 +65,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    paddingVertical: 6,
+    paddingVertical: 10,
+    borderBottomColor: "white",
+    borderBottomWidth: 2.5,
   },
 });
