@@ -4,7 +4,6 @@ import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import Constants from "expo-constants";
 
 export default function HomeLayout() {
@@ -20,7 +19,7 @@ export default function HomeLayout() {
             color={`${pathname === "/" ? "white" : "black"}`}
           />
         </Link>
-        <Link href="/posts/systemsEngineering">
+        <Link href="/posts/all">
           <Entypo
             name="news"
             size={22}

@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { usePathname } from "expo-router";
 
 const Category = () => {
+  const pathname = usePathname();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Category</Text>
+      <Text style={styles.text}>Category {pathname}</Text>
     </View>
   );
 };
