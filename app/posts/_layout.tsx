@@ -59,9 +59,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontStyle: "italic",
     fontSize: 20,
+    fontWeight: "900",
   },
   text2: {
     color: "black",
     fontSize: 15,
+    fontWeight: "700",
   },
 });
