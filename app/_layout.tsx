@@ -16,6 +16,7 @@ export default function HomeLayout() {
         <Link href="/">
           <Feather
             name="home"
+            // size={pathname === "/" ? 28 : 24}
             size={24}
             color={`${pathname === "/" ? "white" : "black"}`}
           />

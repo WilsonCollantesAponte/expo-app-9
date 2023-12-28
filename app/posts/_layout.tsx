@@ -57,8 +57,11 @@ const styles = StyleSheet.create({
   },
   text1: {
     color: "white",
+    fontStyle: "italic",
+    fontSize: 20,
   },
   text2: {
     color: "black",
+    fontSize: 15,
   },
 });
