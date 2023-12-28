@@ -1,16 +1,39 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { Slot } from "expo-router";
+import { Link, Slot, usePathname } from "expo-router";
 
 const Layout = () => {
+  const pathname = usePathname();
+
   return (
     <View style={styles.container}>
       <View style={styles.navbar}>
-        <Text>Architecture</Text>
-        <Text>Civil</Text>
-        <Text>Industrial</Text>
-        <Text>Systems</Text>
-        <Text>All</Text>
+        <Link
+          style={
+            pathname === "/posts/architecture" ? styles.text1 : styles.text2
+          }
+          href="/posts/architecture"
+        >
+          Architecture
+        </Link>
+        <Link
+          style={pathname === "/posts/civil" ? styles.text1 : styles.text2}
+          href="/posts/civil"
+        >
+          Civil
+        </Link>
+        <Link
+          style={pathname === "/posts/systems" ? styles.text1 : styles.text2}
+          href="/posts/systems"
+        >
+          Systems
+        </Link>
+        <Link
+          style={pathname === "/posts/all" ? styles.text1 : styles.text2}
+          href="/posts/all"
+        >
+          All
+        </Link>
       </View>
       <Slot />
     </View>
@@ -32,7 +55,10 @@ const styles = StyleSheet.create({
     borderBottomColor: "white",
     borderBottomWidth: 2.5,
   },
-  text: {
+  text1: {
     color: "white",
+  },
+  text2: {
+    color: "black",
   },
 });
