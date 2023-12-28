@@ -5,6 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+import { StatusBar } from "expo-status-bar";
 
 export default function HomeLayout() {
   const pathname = usePathname();
@@ -49,6 +50,7 @@ export default function HomeLayout() {
         </Link>
       </View>
       <Slot />
+      <StatusBar style="light" />
     </View>
   );
 }
