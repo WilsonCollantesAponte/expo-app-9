@@ -51,18 +51,15 @@ const Category = () => {
     <View style={styles.container}>
       <Text style={styles.text}>Category {pathname}</Text>
       {!isLoading ? (
-        // posts.map((post, index) => (
-        //   <View key={index}>
-        //     <Text style={styles.text1}>{post.title}</Text>
-        //   </View>
-        // ))
         <FlatList
           style={styles.flatList}
-          data={posts}
+          data={posts.slice(0, 1)}
           renderItem={({ item }) => (
-            <Text style={styles.text1}>{item.title}</Text>
+            <View>
+              <Text style={styles.text1}>{item.title}</Text>
+              {/* <Image source={{ uri: item.image[0].data }} /> */}
+            </View>
           )}
-          keyExtractor={(item) => String(item.id)}
         />
       ) : (
         <Text style={styles.text}>Loading...</Text>
@@ -90,5 +87,6 @@ const styles = StyleSheet.create({
   },
   flatList: {
     backgroundColor: "blue",
+    // width: "100%",
   },
 });
