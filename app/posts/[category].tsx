@@ -43,12 +43,15 @@ const Category = () => {
   useEffect(() => {
     fetch("https://utp-app.vercel.app/post/posts/api?idUser=&category=all")
       .then((r) => r.json())
-      .then((r) => console.log(r));
+      .then((r) => setPosts(r));
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Category {pathname}</Text>
+      {posts.map((post, index) => (
+        <View key={index}>{post.title}</View>
+      ))}
     </View>
   );
 };
