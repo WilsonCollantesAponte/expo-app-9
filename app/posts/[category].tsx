@@ -1,34 +1,33 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "expo-router";
 
 interface postDetail {
-  // id     String   @id @default(uuid())
-  idUser: String;
+  idUser: string;
   User: User;
-  idPost: String;
+  idPost: string;
   Post: Post;
   iLove: Boolean;
   iLike: Boolean;
 }
 
 interface User {
-  id: String;
-  name: String;
-  surname: String;
-  email: String;
-  password: String;
-  headquarter: String;
-  cycle: String;
-  carrer: String;
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  password: string;
+  headquarter: string;
+  cycle: string;
+  carrer: string;
   Access: any;
   postDetail: postDetail[];
 }
 
 interface Post {
-  id: String;
-  title: String;
-  description: String;
+  id: string;
+  title: string;
+  description: string;
   image: any;
   postDetail: Array<postDetail>;
   // postDetail: postDetail[];
@@ -39,19 +38,35 @@ const Category = () => {
   const pathname = usePathname();
 
   const [posts, setPosts] = useState<Array<Post>>([]);
+  const [isLoading, setIsLoading] = useState<Boolean>(true);
 
   useEffect(() => {
     fetch("https://utp-app.vercel.app/post/posts/api?idUser=&category=all")
       .then((r) => r.json())
-      .then((r) => setPosts(r));
+      .then((r) => setPosts(r))
+      .then(() => setIsLoading(false));
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Category {pathname}</Text>
-      {posts.map((post, index) => (
-        <View key={index}>{post.title}</View>
-      ))}
+      {!isLoading ? (
+        // posts.map((post, index) => (
+        //   <View key={index}>
+        //     <Text style={styles.text1}>{post.title}</Text>
+        //   </View>
+        // ))
+        <FlatList
+          style={styles.flatList}
+          data={posts}
+          renderItem={({ item }) => (
+            <Text style={styles.text1}>{item.title}</Text>
+          )}
+          keyExtractor={(item) => String(item.id)}
+        />
+      ) : (
+        <Text style={styles.text}>Loading...</Text>
+      )}
     </View>
   );
 };
@@ -67,5 +82,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+  },
+  text1: {
+    fontSize: 20,
+    fontStyle: "italic",
+    color: "white",
+  },
+  flatList: {
+    backgroundColor: "blue",
   },
 });
