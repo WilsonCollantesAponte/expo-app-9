@@ -1,10 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 
 const NewPost = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>NewPost</Text>
+      <Text>Complete the follow fields</Text>
+      <Text>Title</Text>
+      <TextInput />
+      <Text>Description</Text>
+      <TextInput />
+      <Text>Visible para</Text>
     </View>
   );
 };
