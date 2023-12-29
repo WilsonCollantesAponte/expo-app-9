@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id: string;
   name: string;
   surname: string;
@@ -11,7 +11,7 @@ interface User {
   postDetail: Array<postDetail>;
 }
 
-interface Access {
+export interface Access {
   id: string;
   about: boolean;
   posts: boolean;
@@ -21,7 +21,7 @@ interface Access {
   User: User;
 }
 
-interface postScope {
+export interface postScope {
   id: string;
   architecture: boolean;
   industrialEngineering: boolean;
@@ -31,7 +31,7 @@ interface postScope {
   Post: Post;
 }
 
-interface Post {
+export interface Post {
   id: string;
   title: string;
   description: string;
@@ -41,7 +41,7 @@ interface Post {
   postScope: postScope;
 }
 
-interface postDetail {
+export interface postDetail {
   idUser: string;
   User: User;
   idPost: string;
