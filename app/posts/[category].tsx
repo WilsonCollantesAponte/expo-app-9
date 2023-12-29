@@ -1,38 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "expo-router";
-
-interface postDetail {
-  idUser: string;
-  User: User;
-  idPost: string;
-  Post: Post;
-  iLove: Boolean;
-  iLike: Boolean;
-}
-
-interface User {
-  id: string;
-  name: string;
-  surname: string;
-  email: string;
-  password: string;
-  headquarter: string;
-  cycle: string;
-  carrer: string;
-  Access: any;
-  postDetail: postDetail[];
-}
-
-interface Post {
-  id: string;
-  title: string;
-  description: string;
-  image: any;
-  postDetail: Array<postDetail>;
-  // postDetail: postDetail[];
-  postScope: any;
-}
+import { Post } from "../../types/main";
 
 const Category = () => {
   const pathname = usePathname();
