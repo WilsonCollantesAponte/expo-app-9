@@ -15,7 +15,6 @@ const Category = () => {
       .then((r) => setPosts(r))
       .then(() => setIsLoading(false));
   }, []);
-  // console.log(posts[0].image[0]);
 
   return (
     <View style={styles.container}>
@@ -23,11 +22,12 @@ const Category = () => {
       {!isLoading ? (
         <FlatList
           style={styles.flatList}
-          data={posts.slice(0, 1)}
+          data={posts}
           renderItem={({ item }) => (
-            <View>
-              <Text style={styles.text1}>{item.title}</Text>
+            <View style={styles.mainContainerInFlatList}>
+              <Text style={styles.titleText}>{item.title}</Text>
               <Image style={styles.image} source={{ uri: item.image[0] }} />
+              <Text style={styles.descriptionText}>{item.description}</Text>
             </View>
           )}
         />
@@ -50,17 +50,35 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
   },
-  text1: {
+  titleText: {
     fontSize: 20,
     fontStyle: "italic",
     color: "white",
+    paddingLeft: "5.5%",
+    paddingBottom: "1.5%",
+  },
+  descriptionText: {
+    fontSize: 15,
+    fontStyle: "italic",
+    color: "white",
+    paddingLeft: "5.5%",
+    paddingTop: "1.5%",
   },
   flatList: {
-    backgroundColor: "blue",
+    marginTop: "10%",
     width: "90%",
   },
   image: {
+    height: "500%",
     width: "100%",
-    height: "1000%",
+    borderRadius: 12.5,
+  },
+  mainContainerInFlatList: {
+    flex: 1,
+    // display: "flex",
+    height: 1000,
+    marginBottom: 340,
+    // backgroundColor: "red",
+    padding: 10,
   },
 });
