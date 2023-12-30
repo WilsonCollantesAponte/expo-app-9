@@ -51,7 +51,7 @@ export default function HomeLayout() {
         </Link>
       </View>
       <Slot />
-      {/* <StatusBar style="light" /> */}
+      <StatusBar style="light" />
     </View>
   );
 }
