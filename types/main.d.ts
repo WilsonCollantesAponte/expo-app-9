@@ -35,7 +35,7 @@ export interface Post {
   id: string;
   title: string;
   description: string;
-  image: any;
+  image: Array<string>;
   postDetail: Array<postDetail>;
   // postDetail: postDetail[];
   postScope: postScope;
