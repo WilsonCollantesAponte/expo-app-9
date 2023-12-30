@@ -1,7 +1,15 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { usePathname } from "expo-router";
 import { Post } from "../../types/main";
+import Constants from "expo-constants";
 
 const Category = () => {
   const pathname = usePathname();
@@ -15,6 +23,7 @@ const Category = () => {
       .then((r) => setPosts(r))
       .then(() => setIsLoading(false));
   }, []);
+  console.log(posts[0].image[0]);
 
   return (
     <View style={styles.container}>
@@ -26,7 +35,7 @@ const Category = () => {
           renderItem={({ item }) => (
             <View>
               <Text style={styles.text1}>{item.title}</Text>
-              {/* <Image source={{ uri: item.image[0].data }} /> */}
+              <Image style={styles.image} source={{ uri: item.image[0] }} />
             </View>
           )}
         />
@@ -56,6 +65,10 @@ const styles = StyleSheet.create({
   },
   flatList: {
     backgroundColor: "blue",
-    // width: "100%",
+    width: "90%",
+  },
+  image: {
+    width: "1000%",
+    height: "1000%",
   },
 });
