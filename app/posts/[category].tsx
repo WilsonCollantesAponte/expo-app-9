@@ -44,9 +44,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#3f3f46",
-    // alignItems: "stretch
-    // paddingBottom: "10%",
-    // justifyContent: "center",
   },
   text: {
     color: "white",
