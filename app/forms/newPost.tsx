@@ -33,7 +33,6 @@ const NewPost = () => {
       <Text style={styles.text}>Genera un nuevo posteo aquí</Text>
       <TextInput style={styles.textInput} placeholder="Title" />
       <TextInput style={styles.textInput} placeholder="Description" />
-      {/* <Text style={styles.text}>Visible para</Text> */}
       <View
         style={{
           //  flex: 1,
