@@ -4,6 +4,15 @@ import { useState } from "react";
 
 const NewPost = () => {
   const [image, setImage] = useState<string>(null);
+  const [data, setData] = useState<{
+    title: string;
+    description: string;
+    image: Array<string>;
+  }>({
+    title: "",
+    description: "",
+    image: null,
+  });
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
