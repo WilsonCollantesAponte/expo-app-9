@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#3f3f46",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "stretch
+    // paddingBottom: "10%",
+    // justifyContent: "center",
   },
   text: {
     color: "white",
@@ -65,20 +66,21 @@ const styles = StyleSheet.create({
     paddingTop: "1.5%",
   },
   flatList: {
-    marginTop: "10%",
-    width: "90%",
+    // paddingVertical: "10%",
+    paddingHorizontal: "2.5%",
+    // paddingBottom: 40,
+    backgroundColor: "yellow",
+    // width: "90%",
   },
   image: {
-    height: "500%",
+    height: 250,
     width: "100%",
-    borderRadius: 12.5,
+    // borderRadius: 12.5,
   },
   mainContainerInFlatList: {
-    flex: 1,
-    // display: "flex",
-    height: 1000,
-    marginBottom: 340,
-    // backgroundColor: "red",
+    backgroundColor: "#5c657c",
+    borderRadius: 15,
+    marginVertical: 15,
     padding: 10,
   },
 });

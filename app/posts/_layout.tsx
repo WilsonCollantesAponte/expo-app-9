@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import React from "react";
 import { Link, Slot, usePathname } from "expo-router";
 
@@ -45,7 +45,8 @@ export default Layout;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f4511e",
+    // backgroundColor: "#f4511e",
+    backgroundColor: "#5c657c",
   },
   navbar: {
     flexDirection: "row",
@@ -54,6 +55,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomColor: "white",
     borderBottomWidth: 2.5,
+    borderBottomRightRadius: 3.5,
+    borderBottomLeftRadius: 3.5,
   },
   text1: {
     color: "white",
