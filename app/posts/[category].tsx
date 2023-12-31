@@ -63,11 +63,7 @@ const styles = StyleSheet.create({
     paddingTop: "1.5%",
   },
   flatList: {
-    // paddingVertical: "10%",
     paddingHorizontal: "2.5%",
-    // paddingBottom: 40,
-    // backgroundColor: "yellow",
-    // width: "90%",
   },
   image: {
     height: 250,
