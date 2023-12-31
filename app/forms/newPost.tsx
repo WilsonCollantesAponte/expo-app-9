@@ -35,7 +35,6 @@ const NewPost = () => {
       <TextInput style={styles.textInput} placeholder="Description" />
       <View
         style={{
-          //  flex: 1,
           alignItems: "center",
           justifyContent: "center",
         }}
