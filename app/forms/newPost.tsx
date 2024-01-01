@@ -1,17 +1,34 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { useState } from "react";
+import { Post } from "../../types/main";
 
 const NewPost = () => {
   const [image, setImage] = useState<string>(null);
-  const [data, setData] = useState<{
-    title: string;
-    description: string;
-    image: Array<string>;
-  }>({
-    title: "",
-    description: "",
-    image: null,
+  const [isLoading, setIsLoading] = useState<Boolean>(false);
+  const [data, setData] = useState<Post>({
+    id: null,
+    title: "N - Testing - Upload from an Android device - Title",
+    description: "N - Testing - Upload from an Android device - Description",
+    image: [],
+    postDetail: null,
+    postScope: {
+      architecture: true,
+      civilEngineering: true,
+      industrialEngineering: true,
+      systemsEngineering: true,
+      id: null,
+      idPost: null,
+      Post: null,
+    },
   });
 
   const pickImage = async () => {
@@ -22,7 +39,8 @@ const NewPost = () => {
       quality: 1,
     });
 
-    console.log(result);
+    // console.log(result.assets[0].uri);
+    // console.log(typeof result.assets[0].uri);
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
@@ -44,6 +62,47 @@ const NewPost = () => {
         {image && (
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
         )}
+      </View>
+      <View>
+        <Pressable
+          onPress={() => {
+            setIsLoading(true);
+            // fetch("https://utp-app.vercel.app/post/form/api", {
+            //   method: "POST",
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            //   body: JSON.stringify(data),
+            // })
+            //   .then((r) => r.json())
+            //   .then((r) => console.log(JSON.stringify(r)))
+            //   .then(() => setIsLoading(false))
+            //   .catch((e) => {
+            //     console.log("not submit");
+            //     console.log(e);
+
+            //     setIsLoading(false);
+            //   });
+            fetch("http://localhost:3000/post/form/api", {
+              method: "POST",
+              // headers: {
+              //   Accept: "application/json",
+              //   "Content-Type": "application/json",
+              // },
+              body: JSON.stringify(data),
+            })
+              .then((r) => r.json())
+              .then((r) => console.log(r))
+              .then(() => setIsLoading(false))
+              .catch((e) => {
+                console.log(e);
+                setIsLoading(false);
+              });
+          }}
+        >
+          <Text style={styles.text}>Save and Send</Text>
+          <Text style={styles.text}>{String(isLoading)}</Text>
+        </Pressable>
       </View>
     </View>
   );
