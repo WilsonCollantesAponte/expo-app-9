@@ -39,11 +39,9 @@ const NewPost = () => {
       quality: 1,
     });
 
-    // console.log(result.assets[0].uri);
-    // console.log(typeof result.assets[0].uri);
-
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+      setData({ ...data, image: [result.assets[0].uri] });
     }
   };
 
@@ -83,13 +81,21 @@ const NewPost = () => {
 
             //     setIsLoading(false);
             //   });
+
             fetch("http://localhost:3000/post/form/api", {
               method: "POST",
-              // headers: {
-              //   Accept: "application/json",
-              //   "Content-Type": "application/json",
-              // },
-              body: JSON.stringify(data),
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                image: data.image,
+                data: {
+                  title: data.title,
+                  description: data.description,
+                },
+                postScope: data.postScope,
+              }),
             })
               .then((r) => r.json())
               .then((r) => console.log(r))
