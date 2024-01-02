@@ -84,10 +84,10 @@ const NewPost = () => {
 
             fetch("http://localhost:3000/post/form/api", {
               method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
+              // headers: {
+              //   Accept: "application/json",
+              //   "Content-Type": "application/json",
+              // },
               body: JSON.stringify({
                 image: data.image,
                 data: {
