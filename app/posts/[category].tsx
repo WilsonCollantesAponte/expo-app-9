@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   image: {
     height: 250,
     width: "100%",
+    borderRadius: 15,
   },
   mainContainerInFlatList: {
     backgroundColor: "#5c657c",
