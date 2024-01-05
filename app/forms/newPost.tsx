@@ -1,10 +1,12 @@
 import {
   Button,
   Image,
+  NativeSyntheticEvent,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
+  TextInputChangeEventData,
   View,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
@@ -12,12 +14,13 @@ import { useState } from "react";
 import { Post } from "../../types/main";
 
 const NewPost = () => {
+  const [message, setMessage] = useState<any>({});
   const [image, setImage] = useState<string>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Post>({
     id: null,
-    title: "N - Testing - Upload from an Android device - Title",
-    description: "N - Testing - Upload from an Android device - Description",
+    title: "",
+    description: "",
     image: [],
     postDetail: null,
     postScope: {
@@ -45,11 +48,23 @@ const NewPost = () => {
     }
   };
 
+  console.log(data);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Genera un nuevo posteo aquí</Text>
-      <TextInput style={styles.textInput} placeholder="Title" />
-      <TextInput style={styles.textInput} placeholder="Description" />
+      <TextInput
+        style={styles.textInput}
+        placeholder="Title"
+        onChangeText={(text) => setData({ ...data, title: text })}
+        value={data.title}
+      />
+      <TextInput
+        style={styles.textInput}
+        placeholder="Description"
+        onChangeText={(text) => setData({ ...data, description: text })}
+        value={data.description}
+      />
       <View
         style={{
           alignItems: "center",
@@ -84,26 +99,24 @@ const NewPost = () => {
             //     setIsLoading(false);
             //   });
 
-            fetch(
-              "http://localhost:3000/newPost"
-              // ,
-              //  {
-              //   method: "GET",
-              //   // headers: {
-              //   //   Accept: "application/json",
-              //   //   "Content-Type": "application/json",
-              //   // },
-              //   // body: JSON.stringify({
-              //   //   image: data.image,
-              //   //   data: {
-              //   //     title: data.title,
-              //   //     description: data.description,
-              //   //   },
-              //   //   postScope: data.postScope,
-              //   // }),
-              // }
-            )
+            fetch("http://localhost:3000/newPost", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // image: data.image,
+                title: data.title,
+                description: data.description,
+                postScope: data.postScope,
+              }),
+            })
               .then((r) => r.json())
+              .then((r) => {
+                setMessage(r);
+                return r;
+              })
               .then((r) => console.log(r))
               .then(() => setIsLoading(false))
               .catch((e) => {
@@ -115,6 +128,7 @@ const NewPost = () => {
           <Text style={styles.text}>Save and Send</Text>
           <Text style={styles.text}>{String(isLoading)}</Text>
         </Pressable>
+        {/* <Text style={styles.text}>{JSON.stringify(message)}</Text> */}
       </View>
     </View>
   );
