@@ -64,6 +64,8 @@ const NewPost = () => {
       <View>
         <Pressable
           onPress={() => {
+            console.log("oye ...");
+
             setIsLoading(true);
             // fetch("https://utp-app.vercel.app/post/form/api", {
             //   method: "POST",
@@ -82,21 +84,25 @@ const NewPost = () => {
             //     setIsLoading(false);
             //   });
 
-            fetch("http://localhost:3000/post/form/api", {
-              method: "POST",
-              // headers: {
-              //   Accept: "application/json",
-              //   "Content-Type": "application/json",
-              // },
-              body: JSON.stringify({
-                image: data.image,
-                data: {
-                  title: data.title,
-                  description: data.description,
-                },
-                postScope: data.postScope,
-              }),
-            })
+            fetch(
+              "http://localhost:3000/newPost"
+              // ,
+              //  {
+              //   method: "GET",
+              //   // headers: {
+              //   //   Accept: "application/json",
+              //   //   "Content-Type": "application/json",
+              //   // },
+              //   // body: JSON.stringify({
+              //   //   image: data.image,
+              //   //   data: {
+              //   //     title: data.title,
+              //   //     description: data.description,
+              //   //   },
+              //   //   postScope: data.postScope,
+              //   // }),
+              // }
+            )
               .then((r) => r.json())
               .then((r) => console.log(r))
               .then(() => setIsLoading(false))

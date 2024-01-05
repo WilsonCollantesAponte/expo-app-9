@@ -16,35 +16,35 @@ export default function HomeLayout() {
         <Link href="/">
           <Feather
             name="home"
-            size={24}
+            size={30}
             color={`${pathname === "/" ? "white" : "black"}`}
           />
         </Link>
         <Link href="/posts/all">
           <Entypo
             name="news"
-            size={22}
+            size={27.5}
             color={`${pathname.split("/")[1] === "posts" ? "white" : "black"}`}
           />
         </Link>
         <Link href="/forms/newPost">
           <MaterialIcons
             name="post-add"
-            size={26}
+            size={35}
             color={`${pathname === "/forms/newPost" ? "white" : "black"}`}
           />
         </Link>
         <Link href="/forms/signIn">
           <Ionicons
             name="person-circle"
-            size={24}
+            size={30}
             color={`${pathname === "/forms/signIn" ? "white" : "black"}`}
           />
         </Link>
         <Link href="/forms/login">
           <Entypo
             name="login"
-            size={24}
+            size={30}
             color={`${pathname === "/forms/login" ? "white" : "black"}`}
           />
         </Link>
@@ -66,7 +66,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    paddingVertical: 10,
+    paddingTop: 30,
+    paddingBottom: 20,
     borderBottomColor: "white",
     borderBottomWidth: 2.5,
   },
