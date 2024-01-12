@@ -26,7 +26,14 @@ const Category = () => {
           renderItem={({ item }) => (
             <View style={styles.mainContainerInFlatList}>
               <Text style={styles.titleText}>{item.title}</Text>
-              <Image style={styles.image} source={{ uri: item.image[0] }} />
+              <Image
+                style={styles.image}
+                source={{
+                  uri:
+                    item.image[0] ||
+                    "https://st4.depositphotos.com/14953852/24787/v/450/depositphotos_247872612-stock-illustration-no-image-available-icon-vector.jpg",
+                }}
+              />
               <Text style={styles.descriptionText}>{item.description}</Text>
             </View>
           )}
