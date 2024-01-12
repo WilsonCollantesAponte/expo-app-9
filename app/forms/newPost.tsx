@@ -78,19 +78,24 @@ const NewPost = () => {
           onPress={() => {
             setIsLoading(true);
 
-            fetch("http://localhost:3000/post", {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                title: data.title,
-                description: data.description,
-                image: data.image,
-                postScope: data.postScope,
-              }),
-            })
+            fetch(
+              (process.env.NODE_ENV = "development"
+                ? "http://localhost:3000/post"
+                : "https://utp-app-server-nest.onrender.com/post"),
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  title: data.title,
+                  description: data.description,
+                  image: data.image,
+                  postScope: data.postScope,
+                }),
+              }
+            )
               .then(() => setIsLoading(false))
               .catch((e) => {
                 console.log(e);
