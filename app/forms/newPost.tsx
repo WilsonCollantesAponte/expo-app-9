@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Post } from "../../types/main";
 
 const NewPost = () => {
+  const forBase64 = "data:image/png;base64,";
   const [image, setImage] = useState<string>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Post>({
@@ -35,15 +36,20 @@ const NewPost = () => {
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      // mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true,
     });
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
-      setData({ ...data, image: [result.assets[0].uri] });
+      setData({
+        ...data,
+        image: [`data:image/png;base64,${result.assets[0].base64}`],
+      });
     }
   };
 
@@ -78,25 +84,29 @@ const NewPost = () => {
           onPress={() => {
             setIsLoading(true);
 
-            fetch(
-              (process.env.NODE_ENV = "development"
-                ? "http://localhost:3000/post"
-                : "https://utp-app-server-nest.onrender.com/post"),
-              {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  title: data.title,
-                  description: data.description,
-                  image: data.image,
-                  postScope: data.postScope,
-                }),
-              }
-            )
+            // console.log({
+            //   title: data.title,
+            //   description: data.description,
+            //   image: data.image,
+            //   postScope: data.postScope,
+            // });
+
+            fetch("https://utp-app-server-nest.onrender.com/post", {
+              // fetch("http://localhost:3000/post", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                title: data.title,
+                description: data.description,
+                image: data.image,
+                postScope: data.postScope,
+              }),
+            })
               .then(() => setIsLoading(false))
+              .then(() => console.log("Successfully"))
               .catch((e) => {
                 console.log(e);
                 setIsLoading(false);
