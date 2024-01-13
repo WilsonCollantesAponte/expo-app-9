@@ -12,7 +12,6 @@ import { useState } from "react";
 import { Post } from "../../types/main";
 
 const NewPost = () => {
-  const forBase64 = "data:image/png;base64,";
   const [image, setImage] = useState<string>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Post>({
