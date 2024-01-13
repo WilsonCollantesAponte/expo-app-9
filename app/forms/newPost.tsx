@@ -84,13 +84,6 @@ const NewPost = () => {
           onPress={() => {
             setIsLoading(true);
 
-            // console.log({
-            //   title: data.title,
-            //   description: data.description,
-            //   image: data.image,
-            //   postScope: data.postScope,
-            // });
-
             fetch("https://utp-app-server-nest.onrender.com/post", {
               // fetch("http://localhost:3000/post", {
               method: "POST",
