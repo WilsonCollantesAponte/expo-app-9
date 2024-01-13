@@ -12,7 +12,6 @@ import { useState } from "react";
 import { Post } from "../../types/main";
 
 const NewPost = () => {
-  const forBase64 = "data:image/png;base64,";
   const [image, setImage] = useState<string>(null);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Post>({
@@ -84,15 +83,7 @@ const NewPost = () => {
           onPress={() => {
             setIsLoading(true);
 
-            // console.log({
-            //   title: data.title,
-            //   description: data.description,
-            //   image: data.image,
-            //   postScope: data.postScope,
-            // });
-
             fetch("https://utp-app-server-nest.onrender.com/post", {
-              // fetch("http://localhost:3000/post", {
               method: "POST",
               headers: {
                 Accept: "application/json",
