@@ -103,9 +103,9 @@ const NewPost = () => {
               });
           }}
         >
-          <Text style={styles.text}>Save and Send</Text>
-          {isLoading && <Text style={styles.text}>wait, it's Loading...</Text>}
+          {!isLoading && <Text style={styles.text}>Save and Send</Text>}
         </Pressable>
+        {isLoading && <Text style={styles.text}>wait, it's Loading...</Text>}
       </View>
     </View>
   );
