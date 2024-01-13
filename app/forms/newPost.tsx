@@ -84,7 +84,6 @@ const NewPost = () => {
             setIsLoading(true);
 
             fetch("https://utp-app-server-nest.onrender.com/post", {
-              // fetch("http://localhost:3000/post", {
               method: "POST",
               headers: {
                 Accept: "application/json",
