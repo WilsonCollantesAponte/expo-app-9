@@ -31,7 +31,7 @@ const NewPost = () => {
     },
   });
 
-  console.log(process.env.NODE_ENV);
+  // console.log(process.env.NODE_ENV);
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
